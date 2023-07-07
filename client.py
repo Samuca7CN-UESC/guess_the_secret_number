@@ -73,20 +73,34 @@ def start_guesses(game):
 
 
 def get_secret_number(game):
-    secret = int(input("\nQual o número secreto?\n"))  # Obtém o número secreto do jogador
+    try:
+        secret = int(input("\nQual o número secreto?\n"))  # Obtém o número secreto do jogador
+    except:
+        secret = game.min_number - 1
     while secret < game.min_number or secret > game.max_number:  # Verifica se o número está dentro do intervalo permitido
         print("O número secreto deve ser entre "+str(game.min_number)+" e "+str(game.max_number) + "!")
         print("Tente novamente")
-        secret = int(input("\nQual o número secreto?\n"))
+        try:
+            secret = int(input("\nQual o número secreto?\n"))
+        except:
+            secret = game.min_number - 1
     return secret
 
 
 def get_guess(game, i):
-    guess = int(input("\nTentativa " + str(i + 1) + ": "))  # Obtém o palpite do jogador
+    try:
+        guess = int(input("\nTentativa " + str(i + 1) + ": "))# Obtém o palpite do jogador
+    except:
+        guess = game.min_number - 1
+
     while guess < game.min_number or guess > game.max_number:  # Verifica se o palpite está dentro do intervalo permitido
         print("Seu palpite deve ser um número entre "+str(game.min_number)+" e "+str(game.max_number) + "!")
         print("Tente novamente")
-        guess = int(input("\nTentativa " + str(i + 1) + ": "))
+        try:
+            guess = int(input("\nTentativa " + str(i + 1) + ": "))
+        except:
+            guess = game.min_number - 1
+
     return guess
 
 
@@ -125,7 +139,11 @@ def menu_screen():
         print("1.Instruções")
         print("2.Créditos")
         print("3.Sair")
-        op = int(input("Insira a opção desejada: "))
+
+        try:
+            op = int(input("Insira a opção desejada: "))
+        except:
+            op = 4
         
         if op == 0:
             main()  # Inicia o jogo
