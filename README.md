@@ -42,10 +42,12 @@ A lógica da comunicação é que toda vez que o cliente envia uma mensagem para
 
 O cliente envia as seguintes mensagens para o servidor através de funções montadas no Network.py:
 
-- `connect`: Faz a conexão do cliente para receber o seu identificador como jogador
-- `send`: Método para enviar uma mensagem para o servidor e retorna o que o servidor responde para ele
+- `get`: mensagem de requisição do jogo.
+- `reset`: mensagem para reiniciar as variáveis do jogo
+- `sn_(int)`: mensagem para registrar o numero secreto no jogo (o (int) corresponde ao valor do número secreto)
+- `p_(int)`: mensagem para registrar a pontuação da rodada no jogo (o (int) corresponde ao valor da pontuação)
 
-Nos casos de envio de dados da pontuação ou do número secreto, o cliente envia dois dados em formato de string separado por underline para ser recebida pelo servidor como dados diferentes através do comando split do Python no server.py
+Nos casos de envio de dados da pontuação (sn_(int)) ou do número secreto (p_(int)), o cliente envia dois dados em formato de string separado por underline para ser recebida pelo servidor como dados diferentes através do comando split do Python no server.py
 
 ### Mensagens do Servidor para o Cliente
 
